@@ -15,10 +15,10 @@ return new class extends Migration
     {
         Schema::create('services', function (Blueprint $table) {
             $table->id();
-            $table->string("Nom_Service");
-            $table->string("Descriptione");
-            $table->double("Prix")->nullable();
-            $table->foreignId("Categorie_Service_id")->constrained("categorie_services");
+            $table->string("nom_service");
+            $table->string("descriptione");
+            $table->double("prix")->nullable();
+            $table->foreignId("categorie_service_id")->constrained("categorie_services");
           
             $table->timestamps();
         });
@@ -34,7 +34,7 @@ return new class extends Migration
     public function down()
     {
         Schema::table("services", function(Blueprint $table){
-            $table->dropConstrainedForeignId("Categorie_Service_id");
+            $table->dropConstrainedForeignId("categorie_service_id");
         });
         Schema::dropIfExists('services');
     }

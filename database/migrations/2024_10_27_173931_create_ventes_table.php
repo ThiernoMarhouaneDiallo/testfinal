@@ -15,9 +15,9 @@ return new class extends Migration
     {
         Schema::create('ventes', function (Blueprint $table) {
             $table->id();
-            $table->double("Montant_Total")->nullable();
-            $table->foreignId("Produit_id")->constrained("produits");
-            $table->foreignId("utilisateur_id")->constrained("users");
+            $table->double("montant_Total")->nullable();
+            $table->foreignId("produit_id")->constrained("produits");
+            $table->foreignId("user_id")->constrained("users");
             
             $table->timestamps();
         });
@@ -33,10 +33,10 @@ return new class extends Migration
     public function down()
     {
         Schema::table("ventes", function(Blueprint $table){
-            $table->dropConstrainedForeignId("Produit_id");
+            $table->dropConstrainedForeignId("produit_id");
         });
         Schema::table("ventes", function(Blueprint $table){
-            $table->dropConstrainedForeignId("utilisateur_id");
+            $table->dropConstrainedForeignId("user_id");
         });
         Schema::dropIfExists('ventes');
     }

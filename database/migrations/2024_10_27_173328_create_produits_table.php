@@ -15,11 +15,11 @@ return new class extends Migration
     {
         Schema::create('produits', function (Blueprint $table) {
             $table->id();
-            $table->string("Nom_Produit");
-            $table->string("Reference");
-            $table->double("Quantite_En_Stock")->nullable();
-            $table->double("Prix_Unitaire")->nullable();
-            $table->foreignId("Categorie_Produit_id")->constrained("categorie_produits");
+            $table->string("nom_produit");
+            $table->string("reference");
+            $table->double("quantite_en_stock")->nullable();
+            $table->double("prix_unitaire")->nullable();
+            $table->foreignId("categorie_produit_id")->constrained("categorie_produits");
             $table->timestamps();
         });
         Schema::enableForeignKeyConstraints();
@@ -33,7 +33,7 @@ return new class extends Migration
     public function down()
     {
         Schema::table("produits", function(Blueprint $table){
-            $table->dropConstrainedForeignId("Categorie_Produit_id");
+            $table->dropConstrainedForeignId("categorie_produit_id");
         });
         Schema::dropIfExists('produits');
     }

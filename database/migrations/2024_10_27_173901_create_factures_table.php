@@ -15,14 +15,13 @@ return new class extends Migration
     {
         Schema::create('factures', function (Blueprint $table) {
             $table->id();
-            $table->double("Montant_Total")->nullable();
-            $table->string("Mode_Paiement");
-            $table->foreignId("RendezVous_id")->constrained("rendez_vous");
-            $table->foreignId("Utilisateur_id")->constrained("users");
+            $table->double("montant_total")->nullable();
+            $table->string("mode_paiement");
+            $table->foreignId("rendez_vous_id")->constrained("rendez_vous");
+            $table->foreignId("user_id")->constrained("users");
             $table->timestamps();
         });
         Schema::enableForeignKeyConstraints();
-   
     }
 
     /**
@@ -33,10 +32,10 @@ return new class extends Migration
     public function down()
     {
         Schema::table("factures", function(Blueprint $table){
-            $table->dropConstrainedForeignId("RendezVous_id");
+            $table->dropConstrainedForeignId("rendez_vous_id");
         });
         Schema::table("factures", function(Blueprint $table){
-            $table->dropConstrainedForeignId("Utilisateur_id");
+            $table->dropConstrainedForeignId("user_id");
         });
         Schema::dropIfExists('factures');
     }

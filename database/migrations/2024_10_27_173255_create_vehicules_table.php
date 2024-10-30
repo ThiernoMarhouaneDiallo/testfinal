@@ -15,11 +15,11 @@ return new class extends Migration
     {
         Schema::create('vehicules', function (Blueprint $table) {
             $table->id();
-            $table->string("Numero_Immatriculation");
-            $table->string("Marque");
-            $table->string("Modele");
-            $table->double("Annee")->nullable();
-            $table->foreignId("Client_id")->constrained("clients");
+            $table->string("numero_immatriculation");
+            $table->string("marque");
+            $table->string("modele");
+            $table->double("annee")->nullable();
+            $table->foreignId("client_id")->constrained("clients");
             $table->timestamps();
         });
         Schema::enableForeignKeyConstraints();
@@ -33,7 +33,7 @@ return new class extends Migration
     public function down()
     {
         Schema::table("vehicules", function(Blueprint $table){
-            $table->dropConstrainedForeignId("utilisateur_id");
+            $table->dropConstrainedForeignId("client_id");
         });
         Schema::dropIfExists('vehicules');
     }

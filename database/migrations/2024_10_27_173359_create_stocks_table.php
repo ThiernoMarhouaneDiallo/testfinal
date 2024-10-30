@@ -16,9 +16,9 @@ return new class extends Migration
 
         Schema::create('stocks', function (Blueprint $table) {
             $table->id();
-            $table->double("Quantite")->nullable();
-            $table->double("Seuil_Minimum")->nullable();
-            $table->foreignId("Produit_id")->constrained("produits");
+            $table->double("quantite")->nullable();
+            $table->double("seuil_minimum")->nullable();
+            $table->foreignId("produit_id")->constrained("produits");
             $table->timestamps();
         });
         Schema::enableForeignKeyConstraints();
@@ -32,7 +32,7 @@ return new class extends Migration
     public function down()
     {
         Schema::table("stocks", function(Blueprint $table){
-            $table->dropConstrainedForeignId("Produit_id");
+            $table->dropConstrainedForeignId("produit_id");
         });
         Schema::dropIfExists('stocks');
     }

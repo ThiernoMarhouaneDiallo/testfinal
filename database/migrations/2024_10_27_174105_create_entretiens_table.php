@@ -15,9 +15,8 @@ return new class extends Migration
     {
         Schema::create('entretiens', function (Blueprint $table) {
             $table->id();
-            $table->string("Nom_Entretien");
-            $table->string("Description");
-            
+            $table->string("nom_Entretien");
+            $table->string("description");
             $table->timestamps();
         });
     }

@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('rendez_vous', function (Blueprint $table) {
             $table->id();
-            $table->foreignId("Service_id")->constrained("services");
-            $table->foreignId("Produit_id")->constrained("produits");
+            $table->foreignId("service_id")->constrained("services");
+            $table->foreignId("produit_id")->constrained("produits");
             $table->timestamps();
         });
         Schema::enableForeignKeyConstraints();
@@ -31,10 +31,10 @@ return new class extends Migration
     public function down()
     {
         Schema::table("rendez_vous", function(Blueprint $table){
-            $table->dropConstrainedForeignId("Service_id");
+            $table->dropConstrainedForeignId("service_id");
         });
         Schema::table("rendez_vous", function(Blueprint $table){
-            $table->dropConstrainedForeignId("Produit_id");
+            $table->dropConstrainedForeignId("produit_id");
         });
         Schema::dropIfExists('rendez_vous');
     }

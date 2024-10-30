@@ -15,10 +15,10 @@ return new class extends Migration
     {
         Schema::create('historique__notifications', function (Blueprint $table) {
             $table->id();
-            $table->string("Contenu");
-            $table->string("Type_Notification");
-            $table->string("Statut");
-            $table->foreignId("Client_id")->constrained("clients");
+            $table->string("contenu");
+            $table->string("type_notification");
+            $table->string("statut");
+            $table->foreignId("client_id")->constrained("clients");
             $table->timestamps();
         });
         Schema::enableForeignKeyConstraints();

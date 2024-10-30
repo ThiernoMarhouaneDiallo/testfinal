@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('rappels__services', function (Blueprint $table) {
             $table->id();
-            $table->string("Type_Service");
-            $table->foreignId("Vehicule_id")->constrained("vehicules");
+            $table->string("type_Service");
+            $table->foreignId("vehicule_id")->constrained("vehicules");
            
             $table->timestamps();
         });
@@ -32,7 +32,7 @@ return new class extends Migration
     public function down()
     {
         Schema::table("rappels__services", function(Blueprint $table){
-            $table->dropConstrainedForeignId("Vehicule_id");
+            $table->dropConstrainedForeignId("vehicule_id");
         });
         Schema::dropIfExists('rappels__services');
     }
